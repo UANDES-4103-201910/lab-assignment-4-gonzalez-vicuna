@@ -6,20 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 users = [User.new(name:'Claudio', lastname:'Alvarez', \
-              password:'123456', email:'calvarez1@miuandes.cl', \
-              address:'San Carlos de Apoquindo'), 
+              password:'12345678', email:'calvarez1@miuandes.cl', \
+              address:'San Carlos de Apoquindo',phone_number: '1234567890'),
          User.new(name:'Juan', lastname:'Rataplan', \
-              password:'123456', email:'jrataplan@miuandes.cl', \
-              address:'San Carlos de Apoquindo'),
+              password:'12345678', email:'jrataplan@miuandes.cl', \
+              address:'San Carlos de Apoquindo',phone_number: '1234567890'),
          User.new(name:'Raul', lastname:'Rabufetti', \
-              password:'123456', email:'rrabufetti@miuandes.cl', \
-              address:'San Carlos de Apoquindo'),
+              password:'12345678', email:'rrabufetti@miuandes.cl', \
+              address:'San Carlos de Apoquindo',phone_number: '1234567890'),
          User.new(name:'Raul', lastname:'Ganfolfi', \
-              password:'123456', email:'rgandolfi@miuandes.cl', \
-              address:'San Carlos de Apoquindo'),
+              password:'12345678', email:'rgandolfi@miuandes.cl', \
+              address:'San Carlos de Apoquindo',phone_number: '1234567890'),
          User.new(name:'Licenciado', lastname:'Varela', \
-              password:'123456', email:'lvarela@miuandes.cl', \
-              address:'San Carlos de Apoquindo')]
+              password:'12345678', email:'lvarela@miuandes.cl', \
+              address:'San Carlos de Apoquindo',phone_number: '1234567890')]
               
 for u in users do
   u.save!
@@ -34,11 +34,11 @@ for ev in event_venues do
 end 
 
 events = [Event.new(name:'Festival de la Cancion', description: 'Puro reggaeton',\
-          start_date: '2019-03-01', event_venue: event_venues[0]),
+          start_date: '2020-03-01', event_venue: event_venues[0]),
           Event.new(name:'Twisted Sister', description: 'Puro rock',\
-          start_date: '2019-04-01', event_venue: event_venues[1]),
+          start_date: '2020-04-01', event_venue: event_venues[1]),
           Event.new(name:'Bad Bunny', description: 'Puro Trap',\
-          start_date: '2019-05-01', event_venue: event_venues[2])]
+          start_date: '2020-05-01', event_venue: event_venues[2])]
 
 for e in events do
   e.save!
