@@ -5,7 +5,7 @@ class Ticket < ApplicationRecord
   def event_date_cannot_be_in_the_past
     eventdate=self.ticket_type.event.start_date
     if eventdate.present? && eventdate < Date.today
-      errors.add("Event can't be in the past")
+      errors.add("Event can't be in the past or in the present")
     end
   end
 

@@ -795,3 +795,1350 @@ FOREIGN KEY ("order_id")
   ↳ db/seeds.rb:33
   [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
   ↳ db/seeds.rb:33
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "event_venues"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (71.4ms)[0m  [1m[35mCREATE TABLE "event_venues" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "capacity" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events"[0m
+  ↳ db/schema.rb:23
+  [1m[35m (61.5ms)[0m  [1m[35mCREATE TABLE "events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "start_date" date, "event_venue_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:23
+  [1m[35m (56.8ms)[0m  [1m[35mCREATE  INDEX "index_events_on_event_venue_id" ON "events" ("event_venue_id")[0m
+  ↳ db/schema.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders"[0m
+  ↳ db/schema.rb:33
+  [1m[35m (57.2ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:33
+  [1m[35m (59.6ms)[0m  [1m[35mCREATE  INDEX "index_orders_on_user_id" ON "orders" ("user_id")[0m
+  ↳ db/schema.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ticket_types"[0m
+  ↳ db/schema.rb:40
+  [1m[35m (66.3ms)[0m  [1m[35mCREATE TABLE "ticket_types" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "price" integer, "ticket_zone_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:40
+  [1m[35m (82.8ms)[0m  [1m[35mCREATE  INDEX "index_ticket_types_on_event_id" ON "ticket_types" ("event_id")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (75.3ms)[0m  [1m[35mCREATE  INDEX "index_ticket_types_on_ticket_zone_id" ON "ticket_types" ("ticket_zone_id")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ticket_zones"[0m
+  ↳ db/schema.rb:50
+  [1m[35m (76.2ms)[0m  [1m[35mCREATE TABLE "ticket_zones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "zone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:50
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tickets"[0m
+  ↳ db/schema.rb:56
+  [1m[35m (74.4ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "ticket_type_id" integer, "order_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:56
+  [1m[35m (107.9ms)[0m  [1m[35mCREATE  INDEX "index_tickets_on_order_id" ON "tickets" ("order_id")[0m
+  ↳ db/schema.rb:56
+  [1m[35m (84.3ms)[0m  [1m[35mCREATE  INDEX "index_tickets_on_ticket_type_id" ON "tickets" ("ticket_type_id")[0m
+  ↳ db/schema.rb:56
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  ↳ db/schema.rb:65
+  [1m[35m (65.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "lastname" varchar, "email" varchar, "password" varchar, "address" varchar, "phone_number" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:65
+  [1m[35m (66.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (53.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190329134851)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (68.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190329134320),
+(20190329134721),
+(20190329134334),
+(20190329134423),
+(20190329134615),
+(20190329134642);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (72.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-03 14:39:43.123534"], ["updated_at", "2019-04-03 14:39:43.123534"]]
+  ↳ db/schema.rb:13
+  [1m[35m (62.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "event_venues"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (69.2ms)[0m  [1m[35mCREATE TABLE "event_venues" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "capacity" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events"[0m
+  ↳ db/schema.rb:23
+  [1m[35m (77.0ms)[0m  [1m[35mCREATE TABLE "events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "start_date" date, "event_venue_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:23
+  [1m[35m (123.9ms)[0m  [1m[35mCREATE  INDEX "index_events_on_event_venue_id" ON "events" ("event_venue_id")[0m
+  ↳ db/schema.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders"[0m
+  ↳ db/schema.rb:33
+  [1m[35m (66.8ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:33
+  [1m[35m (66.6ms)[0m  [1m[35mCREATE  INDEX "index_orders_on_user_id" ON "orders" ("user_id")[0m
+  ↳ db/schema.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ticket_types"[0m
+  ↳ db/schema.rb:40
+  [1m[35m (66.2ms)[0m  [1m[35mCREATE TABLE "ticket_types" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "price" integer, "ticket_zone_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:40
+  [1m[35m (58.6ms)[0m  [1m[35mCREATE  INDEX "index_ticket_types_on_event_id" ON "ticket_types" ("event_id")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (56.8ms)[0m  [1m[35mCREATE  INDEX "index_ticket_types_on_ticket_zone_id" ON "ticket_types" ("ticket_zone_id")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ticket_zones"[0m
+  ↳ db/schema.rb:50
+  [1m[35m (57.7ms)[0m  [1m[35mCREATE TABLE "ticket_zones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "zone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:50
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tickets"[0m
+  ↳ db/schema.rb:56
+  [1m[35m (108.1ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "ticket_type_id" integer, "order_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:56
+  [1m[35m (57.5ms)[0m  [1m[35mCREATE  INDEX "index_tickets_on_order_id" ON "tickets" ("order_id")[0m
+  ↳ db/schema.rb:56
+  [1m[35m (67.2ms)[0m  [1m[35mCREATE  INDEX "index_tickets_on_ticket_type_id" ON "tickets" ("ticket_type_id")[0m
+  ↳ db/schema.rb:56
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  ↳ db/schema.rb:65
+  [1m[35m (74.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "lastname" varchar, "email" varchar, "password" varchar, "address" varchar, "phone_number" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:65
+  [1m[35m (83.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (63.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190329134851)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (66.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190329134320),
+(20190329134721),
+(20190329134334),
+(20190329134423),
+(20190329134615),
+(20190329134642);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (86.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-03 14:39:44.467793"], ["updated_at", "2019-04-03 14:39:44.467793"]]
+  ↳ db/schema.rb:13
+  [1m[35m (52.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2019-04-03 14:39:44.522086"], ["key", "environment"]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (64.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Claudio"], ["lastname", "Alvarez"], ["email", "calvarez1@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:39:44.638331"], ["updated_at", "2019-04-03 14:39:44.638331"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (55.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Juan"], ["lastname", "Rataplan"], ["email", "jrataplan@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:39:44.698069"], ["updated_at", "2019-04-03 14:39:44.698069"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (44.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Raul"], ["lastname", "Rabufetti"], ["email", "rrabufetti@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:39:44.743416"], ["updated_at", "2019-04-03 14:39:44.743416"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (50.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Raul"], ["lastname", "Ganfolfi"], ["email", "rgandolfi@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:39:44.795019"], ["updated_at", "2019-04-03 14:39:44.795019"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (39.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Licenciado"], ["lastname", "Varela"], ["email", "lvarela@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:39:44.835130"], ["updated_at", "2019-04-03 14:39:44.835130"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (58.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "event_venues"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (60.9ms)[0m  [1m[35mCREATE TABLE "event_venues" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "capacity" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events"[0m
+  ↳ db/schema.rb:23
+  [1m[35m (66.3ms)[0m  [1m[35mCREATE TABLE "events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "start_date" date, "event_venue_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:23
+  [1m[35m (66.7ms)[0m  [1m[35mCREATE  INDEX "index_events_on_event_venue_id" ON "events" ("event_venue_id")[0m
+  ↳ db/schema.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders"[0m
+  ↳ db/schema.rb:33
+  [1m[35m (58.2ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:33
+  [1m[35m (58.2ms)[0m  [1m[35mCREATE  INDEX "index_orders_on_user_id" ON "orders" ("user_id")[0m
+  ↳ db/schema.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ticket_types"[0m
+  ↳ db/schema.rb:40
+  [1m[35m (58.2ms)[0m  [1m[35mCREATE TABLE "ticket_types" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "price" integer, "ticket_zone_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:40
+  [1m[35m (58.3ms)[0m  [1m[35mCREATE  INDEX "index_ticket_types_on_event_id" ON "ticket_types" ("event_id")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (58.3ms)[0m  [1m[35mCREATE  INDEX "index_ticket_types_on_ticket_zone_id" ON "ticket_types" ("ticket_zone_id")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ticket_zones"[0m
+  ↳ db/schema.rb:50
+  [1m[35m (58.4ms)[0m  [1m[35mCREATE TABLE "ticket_zones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "zone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:50
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tickets"[0m
+  ↳ db/schema.rb:56
+  [1m[35m (66.4ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "ticket_type_id" integer, "order_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:56
+  [1m[35m (76.3ms)[0m  [1m[35mCREATE  INDEX "index_tickets_on_order_id" ON "tickets" ("order_id")[0m
+  ↳ db/schema.rb:56
+  [1m[35m (74.9ms)[0m  [1m[35mCREATE  INDEX "index_tickets_on_ticket_type_id" ON "tickets" ("ticket_type_id")[0m
+  ↳ db/schema.rb:56
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  ↳ db/schema.rb:65
+  [1m[35m (116.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "lastname" varchar, "email" varchar, "password" varchar, "address" varchar, "phone_number" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:65
+  [1m[35m (75.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (55.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190329134851)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (66.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190329134320),
+(20190329134721),
+(20190329134334),
+(20190329134423),
+(20190329134615),
+(20190329134642);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (77.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-03 14:41:23.026391"], ["updated_at", "2019-04-03 14:41:23.026391"]]
+  ↳ db/schema.rb:13
+  [1m[35m (59.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "event_venues"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (59.5ms)[0m  [1m[35mCREATE TABLE "event_venues" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "capacity" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events"[0m
+  ↳ db/schema.rb:23
+  [1m[35m (57.9ms)[0m  [1m[35mCREATE TABLE "events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "start_date" date, "event_venue_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:23
+  [1m[35m (58.3ms)[0m  [1m[35mCREATE  INDEX "index_events_on_event_venue_id" ON "events" ("event_venue_id")[0m
+  ↳ db/schema.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders"[0m
+  ↳ db/schema.rb:33
+  [1m[35m (58.4ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:33
+  [1m[35m (58.2ms)[0m  [1m[35mCREATE  INDEX "index_orders_on_user_id" ON "orders" ("user_id")[0m
+  ↳ db/schema.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ticket_types"[0m
+  ↳ db/schema.rb:40
+  [1m[35m (58.4ms)[0m  [1m[35mCREATE TABLE "ticket_types" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "price" integer, "ticket_zone_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:40
+  [1m[35m (66.7ms)[0m  [1m[35mCREATE  INDEX "index_ticket_types_on_event_id" ON "ticket_types" ("event_id")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (76.0ms)[0m  [1m[35mCREATE  INDEX "index_ticket_types_on_ticket_zone_id" ON "ticket_types" ("ticket_zone_id")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ticket_zones"[0m
+  ↳ db/schema.rb:50
+  [1m[35m (66.7ms)[0m  [1m[35mCREATE TABLE "ticket_zones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "zone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:50
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tickets"[0m
+  ↳ db/schema.rb:56
+  [1m[35m (66.5ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "ticket_type_id" integer, "order_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:56
+  [1m[35m (108.4ms)[0m  [1m[35mCREATE  INDEX "index_tickets_on_order_id" ON "tickets" ("order_id")[0m
+  ↳ db/schema.rb:56
+  [1m[35m (58.2ms)[0m  [1m[35mCREATE  INDEX "index_tickets_on_ticket_type_id" ON "tickets" ("ticket_type_id")[0m
+  ↳ db/schema.rb:56
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  ↳ db/schema.rb:65
+  [1m[35m (58.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "lastname" varchar, "email" varchar, "password" varchar, "address" varchar, "phone_number" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:65
+  [1m[35m (75.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (52.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190329134851)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (58.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190329134320),
+(20190329134721),
+(20190329134334),
+(20190329134423),
+(20190329134615),
+(20190329134642);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (72.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-03 14:41:24.210519"], ["updated_at", "2019-04-03 14:41:24.210519"]]
+  ↳ db/schema.rb:13
+  [1m[35m (50.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2019-04-03 14:41:24.262896"], ["key", "environment"]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (56.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Claudio"], ["lastname", "Alvarez"], ["email", "calvarez1@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:41:24.341672"], ["updated_at", "2019-04-03 14:41:24.341672"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (99.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Juan"], ["lastname", "Rataplan"], ["email", "jrataplan@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:41:24.442226"], ["updated_at", "2019-04-03 14:41:24.442226"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (40.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Raul"], ["lastname", "Rabufetti"], ["email", "rrabufetti@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:41:24.483707"], ["updated_at", "2019-04-03 14:41:24.483707"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (40.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Raul"], ["lastname", "Ganfolfi"], ["email", "rgandolfi@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:41:24.525563"], ["updated_at", "2019-04-03 14:41:24.525563"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (40.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Licenciado"], ["lastname", "Varela"], ["email", "lvarela@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:41:24.567025"], ["updated_at", "2019-04-03 14:41:24.567025"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (49.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mEventVenue Create (0.2ms)[0m  [1m[32mINSERT INTO "event_venues" ("name", "address", "capacity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Estadio Nacional lalalalalala"], ["address", "Maraton"], ["capacity", 60000], ["created_at", "2019-04-03 14:41:24.621692"], ["updated_at", "2019-04-03 14:41:24.621692"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (43.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mEventVenue Create (0.1ms)[0m  [1m[32mINSERT INTO "event_venues" ("name", "address", "capacity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Estadio Monumental lalalalala"], ["address", "Exequiel"], ["capacity", 25000], ["created_at", "2019-04-03 14:41:24.666584"], ["updated_at", "2019-04-03 14:41:24.666584"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (49.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mEventVenue Create (0.1ms)[0m  [1m[32mINSERT INTO "event_venues" ("name", "address", "capacity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Movistar Arena lalalalala"], ["address", "Matta"], ["capacity", 15000], ["created_at", "2019-04-03 14:41:24.716609"], ["updated_at", "2019-04-03 14:41:24.716609"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (48.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "start_date", "event_venue_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Festival de la Cancion"], ["description", "Puro reggaeton"], ["start_date", "2020-03-01"], ["event_venue_id", 1], ["created_at", "2019-04-03 14:41:24.823738"], ["updated_at", "2019-04-03 14:41:24.823738"]]
+  ↳ db/seeds.rb:44
+  [1m[35m (50.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "start_date", "event_venue_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Twisted Sister"], ["description", "Puro rock"], ["start_date", "2020-04-01"], ["event_venue_id", 2], ["created_at", "2019-04-03 14:41:24.875282"], ["updated_at", "2019-04-03 14:41:24.875282"]]
+  ↳ db/seeds.rb:44
+  [1m[35m (49.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "start_date", "event_venue_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bad Bunny"], ["description", "Puro Trap"], ["start_date", "2020-05-01"], ["event_venue_id", 3], ["created_at", "2019-04-03 14:41:24.926164"], ["updated_at", "2019-04-03 14:41:24.926164"]]
+  ↳ db/seeds.rb:44
+  [1m[35m (47.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[36mTicketZone Create (0.1ms)[0m  [1m[32mINSERT INTO "ticket_zones" ("zone", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["zone", "Cancha"], ["created_at", "2019-04-03 14:41:25.009629"], ["updated_at", "2019-04-03 14:41:25.009629"]]
+  ↳ db/seeds.rb:52
+  [1m[35m (47.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[36mTicketZone Create (0.1ms)[0m  [1m[32mINSERT INTO "ticket_zones" ("zone", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["zone", "Pacifico"], ["created_at", "2019-04-03 14:41:25.058607"], ["updated_at", "2019-04-03 14:41:25.058607"]]
+  ↳ db/seeds.rb:52
+  [1m[35m (41.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[36mTicketZone Create (0.1ms)[0m  [1m[32mINSERT INTO "ticket_zones" ("zone", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["zone", "Pacifico VIP"], ["created_at", "2019-04-03 14:41:25.101974"], ["updated_at", "2019-04-03 14:41:25.101974"]]
+  ↳ db/seeds.rb:52
+  [1m[35m (47.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 1], ["price", 20000], ["ticket_zone_id", 1], ["created_at", "2019-04-03 14:41:25.172974"], ["updated_at", "2019-04-03 14:41:25.172974"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (50.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 1], ["price", 30000], ["ticket_zone_id", 2], ["created_at", "2019-04-03 14:41:25.225354"], ["updated_at", "2019-04-03 14:41:25.225354"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (42.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 1], ["price", 40000], ["ticket_zone_id", 3], ["created_at", "2019-04-03 14:41:25.268878"], ["updated_at", "2019-04-03 14:41:25.268878"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (38.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 2], ["price", 20000], ["ticket_zone_id", 1], ["created_at", "2019-04-03 14:41:25.308684"], ["updated_at", "2019-04-03 14:41:25.308684"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (40.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 2], ["price", 30000], ["ticket_zone_id", 2], ["created_at", "2019-04-03 14:41:25.350335"], ["updated_at", "2019-04-03 14:41:25.350335"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (42.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 2], ["price", 40000], ["ticket_zone_id", 3], ["created_at", "2019-04-03 14:41:25.394014"], ["updated_at", "2019-04-03 14:41:25.394014"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (38.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 3], ["price", 20000], ["ticket_zone_id", 1], ["created_at", "2019-04-03 14:41:25.433737"], ["updated_at", "2019-04-03 14:41:25.433737"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (41.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 3], ["price", 30000], ["ticket_zone_id", 2], ["created_at", "2019-04-03 14:41:25.477004"], ["updated_at", "2019-04-03 14:41:25.477004"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (30.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 3], ["price", 40000], ["ticket_zone_id", 3], ["created_at", "2019-04-03 14:41:25.508844"], ["updated_at", "2019-04-03 14:41:25.508844"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (31.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 1], ["created_at", "2019-04-03 14:41:25.556891"], ["updated_at", "2019-04-03 14:41:25.556891"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (42.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "event_venues"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (68.4ms)[0m  [1m[35mCREATE TABLE "event_venues" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "capacity" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events"[0m
+  ↳ db/schema.rb:23
+  [1m[35m (167.1ms)[0m  [1m[35mCREATE TABLE "events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "start_date" date, "event_venue_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:23
+  [1m[35m (66.8ms)[0m  [1m[35mCREATE  INDEX "index_events_on_event_venue_id" ON "events" ("event_venue_id")[0m
+  ↳ db/schema.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders"[0m
+  ↳ db/schema.rb:33
+  [1m[35m (66.5ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:33
+  [1m[35m (68.1ms)[0m  [1m[35mCREATE  INDEX "index_orders_on_user_id" ON "orders" ("user_id")[0m
+  ↳ db/schema.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ticket_types"[0m
+  ↳ db/schema.rb:40
+  [1m[35m (66.7ms)[0m  [1m[35mCREATE TABLE "ticket_types" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "price" integer, "ticket_zone_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:40
+  [1m[35m (66.6ms)[0m  [1m[35mCREATE  INDEX "index_ticket_types_on_event_id" ON "ticket_types" ("event_id")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (66.8ms)[0m  [1m[35mCREATE  INDEX "index_ticket_types_on_ticket_zone_id" ON "ticket_types" ("ticket_zone_id")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ticket_zones"[0m
+  ↳ db/schema.rb:50
+  [1m[35m (108.2ms)[0m  [1m[35mCREATE TABLE "ticket_zones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "zone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:50
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tickets"[0m
+  ↳ db/schema.rb:56
+  [1m[35m (66.6ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "ticket_type_id" integer, "order_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:56
+  [1m[35m (66.6ms)[0m  [1m[35mCREATE  INDEX "index_tickets_on_order_id" ON "tickets" ("order_id")[0m
+  ↳ db/schema.rb:56
+  [1m[35m (66.8ms)[0m  [1m[35mCREATE  INDEX "index_tickets_on_ticket_type_id" ON "tickets" ("ticket_type_id")[0m
+  ↳ db/schema.rb:56
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  ↳ db/schema.rb:65
+  [1m[35m (66.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "lastname" varchar, "email" varchar, "password" varchar, "address" varchar, "phone_number" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:65
+  [1m[35m (66.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (52.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190329134851)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (49.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190329134320),
+(20190329134721),
+(20190329134334),
+(20190329134423),
+(20190329134615),
+(20190329134642);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (72.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-03 14:42:02.814495"], ["updated_at", "2019-04-03 14:42:02.814495"]]
+  ↳ db/schema.rb:13
+  [1m[35m (56.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "event_venues"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (70.9ms)[0m  [1m[35mCREATE TABLE "event_venues" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "capacity" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events"[0m
+  ↳ db/schema.rb:23
+  [1m[35m (67.2ms)[0m  [1m[35mCREATE TABLE "events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "start_date" date, "event_venue_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:23
+  [1m[35m (66.8ms)[0m  [1m[35mCREATE  INDEX "index_events_on_event_venue_id" ON "events" ("event_venue_id")[0m
+  ↳ db/schema.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders"[0m
+  ↳ db/schema.rb:33
+  [1m[35m (66.6ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:33
+  [1m[35m (66.6ms)[0m  [1m[35mCREATE  INDEX "index_orders_on_user_id" ON "orders" ("user_id")[0m
+  ↳ db/schema.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ticket_types"[0m
+  ↳ db/schema.rb:40
+  [1m[35m (66.7ms)[0m  [1m[35mCREATE TABLE "ticket_types" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "price" integer, "ticket_zone_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:40
+  [1m[35m (66.8ms)[0m  [1m[35mCREATE  INDEX "index_ticket_types_on_event_id" ON "ticket_types" ("event_id")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (66.1ms)[0m  [1m[35mCREATE  INDEX "index_ticket_types_on_ticket_zone_id" ON "ticket_types" ("ticket_zone_id")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "ticket_zones"[0m
+  ↳ db/schema.rb:50
+  [1m[35m (116.9ms)[0m  [1m[35mCREATE TABLE "ticket_zones" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "zone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:50
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tickets"[0m
+  ↳ db/schema.rb:56
+  [1m[35m (58.2ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "ticket_type_id" integer, "order_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:56
+  [1m[35m (58.4ms)[0m  [1m[35mCREATE  INDEX "index_tickets_on_order_id" ON "tickets" ("order_id")[0m
+  ↳ db/schema.rb:56
+  [1m[35m (66.4ms)[0m  [1m[35mCREATE  INDEX "index_tickets_on_ticket_type_id" ON "tickets" ("ticket_type_id")[0m
+  ↳ db/schema.rb:56
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  ↳ db/schema.rb:65
+  [1m[35m (66.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "lastname" varchar, "email" varchar, "password" varchar, "address" varchar, "phone_number" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:65
+  [1m[35m (83.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (66.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190329134851)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (66.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190329134320),
+(20190329134721),
+(20190329134334),
+(20190329134423),
+(20190329134615),
+(20190329134642);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (67.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-03 14:42:04.074566"], ["updated_at", "2019-04-03 14:42:04.074566"]]
+  ↳ db/schema.rb:13
+  [1m[35m (56.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2019-04-03 14:42:04.132482"], ["key", "environment"]]
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (64.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Claudio"], ["lastname", "Alvarez"], ["email", "calvarez1@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:04.207698"], ["updated_at", "2019-04-03 14:42:04.207698"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (103.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Juan"], ["lastname", "Rataplan"], ["email", "jrataplan@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:04.312631"], ["updated_at", "2019-04-03 14:42:04.312631"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (48.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Raul"], ["lastname", "Rabufetti"], ["email", "rrabufetti@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:04.362593"], ["updated_at", "2019-04-03 14:42:04.362593"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (48.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Raul"], ["lastname", "Ganfolfi"], ["email", "rgandolfi@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:04.412488"], ["updated_at", "2019-04-03 14:42:04.412488"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (48.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Licenciado"], ["lastname", "Varela"], ["email", "lvarela@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:04.462581"], ["updated_at", "2019-04-03 14:42:04.462581"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (46.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mEventVenue Create (0.1ms)[0m  [1m[32mINSERT INTO "event_venues" ("name", "address", "capacity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Estadio Nacional lalalalalala"], ["address", "Maraton"], ["capacity", 60000], ["created_at", "2019-04-03 14:42:04.537246"], ["updated_at", "2019-04-03 14:42:04.537246"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (57.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mEventVenue Create (0.1ms)[0m  [1m[32mINSERT INTO "event_venues" ("name", "address", "capacity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Estadio Monumental lalalalala"], ["address", "Exequiel"], ["capacity", 25000], ["created_at", "2019-04-03 14:42:04.596024"], ["updated_at", "2019-04-03 14:42:04.596024"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (48.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mEventVenue Create (0.1ms)[0m  [1m[32mINSERT INTO "event_venues" ("name", "address", "capacity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Movistar Arena lalalalala"], ["address", "Matta"], ["capacity", 15000], ["created_at", "2019-04-03 14:42:04.645937"], ["updated_at", "2019-04-03 14:42:04.645937"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (48.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[36mEvent Create (0.1ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "start_date", "event_venue_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Festival de la Cancion"], ["description", "Puro reggaeton"], ["start_date", "2020-03-01"], ["event_venue_id", 1], ["created_at", "2019-04-03 14:42:04.702372"], ["updated_at", "2019-04-03 14:42:04.702372"]]
+  ↳ db/seeds.rb:44
+  [1m[35m (44.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "start_date", "event_venue_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Twisted Sister"], ["description", "Puro rock"], ["start_date", "2020-04-01"], ["event_venue_id", 2], ["created_at", "2019-04-03 14:42:04.748509"], ["updated_at", "2019-04-03 14:42:04.748509"]]
+  ↳ db/seeds.rb:44
+  [1m[35m (45.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "start_date", "event_venue_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bad Bunny"], ["description", "Puro Trap"], ["start_date", "2020-05-01"], ["event_venue_id", 3], ["created_at", "2019-04-03 14:42:04.795471"], ["updated_at", "2019-04-03 14:42:04.795471"]]
+  ↳ db/seeds.rb:44
+  [1m[35m (48.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[36mTicketZone Create (0.1ms)[0m  [1m[32mINSERT INTO "ticket_zones" ("zone", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["zone", "Cancha"], ["created_at", "2019-04-03 14:42:04.850255"], ["updated_at", "2019-04-03 14:42:04.850255"]]
+  ↳ db/seeds.rb:52
+  [1m[35m (44.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[36mTicketZone Create (0.1ms)[0m  [1m[32mINSERT INTO "ticket_zones" ("zone", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["zone", "Pacifico"], ["created_at", "2019-04-03 14:42:04.895608"], ["updated_at", "2019-04-03 14:42:04.895608"]]
+  ↳ db/seeds.rb:52
+  [1m[35m (40.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[36mTicketZone Create (0.1ms)[0m  [1m[32mINSERT INTO "ticket_zones" ("zone", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["zone", "Pacifico VIP"], ["created_at", "2019-04-03 14:42:04.937272"], ["updated_at", "2019-04-03 14:42:04.937272"]]
+  ↳ db/seeds.rb:52
+  [1m[35m (40.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 1], ["price", 20000], ["ticket_zone_id", 1], ["created_at", "2019-04-03 14:42:04.986276"], ["updated_at", "2019-04-03 14:42:04.986276"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (33.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 1], ["price", 30000], ["ticket_zone_id", 2], ["created_at", "2019-04-03 14:42:05.021513"], ["updated_at", "2019-04-03 14:42:05.021513"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (47.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 1], ["price", 40000], ["ticket_zone_id", 3], ["created_at", "2019-04-03 14:42:05.071353"], ["updated_at", "2019-04-03 14:42:05.071353"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (31.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 2], ["price", 20000], ["ticket_zone_id", 1], ["created_at", "2019-04-03 14:42:05.104288"], ["updated_at", "2019-04-03 14:42:05.104288"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (32.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 2], ["price", 30000], ["ticket_zone_id", 2], ["created_at", "2019-04-03 14:42:05.137574"], ["updated_at", "2019-04-03 14:42:05.137574"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (32.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.1ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 2], ["price", 40000], ["ticket_zone_id", 3], ["created_at", "2019-04-03 14:42:05.172795"], ["updated_at", "2019-04-03 14:42:05.172795"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (46.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 3], ["price", 20000], ["ticket_zone_id", 1], ["created_at", "2019-04-03 14:42:05.220778"], ["updated_at", "2019-04-03 14:42:05.220778"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (49.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.1ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 3], ["price", 30000], ["ticket_zone_id", 2], ["created_at", "2019-04-03 14:42:05.271953"], ["updated_at", "2019-04-03 14:42:05.271953"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (47.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 3], ["price", 40000], ["ticket_zone_id", 3], ["created_at", "2019-04-03 14:42:05.320759"], ["updated_at", "2019-04-03 14:42:05.320759"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (49.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 1], ["created_at", "2019-04-03 14:42:05.376455"], ["updated_at", "2019-04-03 14:42:05.376455"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (43.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 1]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Claudio"], ["lastname", "Alvarez"], ["email", "calvarez1@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:11.495978"], ["updated_at", "2019-04-03 14:42:11.495978"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (58.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Juan"], ["lastname", "Rataplan"], ["email", "jrataplan@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:11.555499"], ["updated_at", "2019-04-03 14:42:11.555499"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (48.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Raul"], ["lastname", "Rabufetti"], ["email", "rrabufetti@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:11.605390"], ["updated_at", "2019-04-03 14:42:11.605390"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (48.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Raul"], ["lastname", "Ganfolfi"], ["email", "rgandolfi@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:11.655491"], ["updated_at", "2019-04-03 14:42:11.655491"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (48.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Licenciado"], ["lastname", "Varela"], ["email", "lvarela@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:11.705501"], ["updated_at", "2019-04-03 14:42:11.705501"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (48.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mEventVenue Create (0.1ms)[0m  [1m[32mINSERT INTO "event_venues" ("name", "address", "capacity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Estadio Nacional lalalalalala"], ["address", "Maraton"], ["capacity", 60000], ["created_at", "2019-04-03 14:42:11.760072"], ["updated_at", "2019-04-03 14:42:11.760072"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (43.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mEventVenue Create (0.1ms)[0m  [1m[32mINSERT INTO "event_venues" ("name", "address", "capacity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Estadio Monumental lalalalala"], ["address", "Exequiel"], ["capacity", 25000], ["created_at", "2019-04-03 14:42:11.805020"], ["updated_at", "2019-04-03 14:42:11.805020"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (40.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mEventVenue Create (0.1ms)[0m  [1m[32mINSERT INTO "event_venues" ("name", "address", "capacity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Movistar Arena lalalalala"], ["address", "Matta"], ["capacity", 15000], ["created_at", "2019-04-03 14:42:11.846580"], ["updated_at", "2019-04-03 14:42:11.846580"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (299.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "start_date", "event_venue_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Festival de la Cancion"], ["description", "Puro reggaeton"], ["start_date", "2020-03-01"], ["event_venue_id", 4], ["created_at", "2019-04-03 14:42:12.154886"], ["updated_at", "2019-04-03 14:42:12.154886"]]
+  ↳ db/seeds.rb:44
+  [1m[35m (40.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "start_date", "event_venue_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Twisted Sister"], ["description", "Puro rock"], ["start_date", "2020-04-01"], ["event_venue_id", 5], ["created_at", "2019-04-03 14:42:12.197224"], ["updated_at", "2019-04-03 14:42:12.197224"]]
+  ↳ db/seeds.rb:44
+  [1m[35m (39.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "start_date", "event_venue_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bad Bunny"], ["description", "Puro Trap"], ["start_date", "2020-05-01"], ["event_venue_id", 6], ["created_at", "2019-04-03 14:42:12.238709"], ["updated_at", "2019-04-03 14:42:12.238709"]]
+  ↳ db/seeds.rb:44
+  [1m[35m (40.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[36mTicketZone Create (0.1ms)[0m  [1m[32mINSERT INTO "ticket_zones" ("zone", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["zone", "Cancha"], ["created_at", "2019-04-03 14:42:12.284516"], ["updated_at", "2019-04-03 14:42:12.284516"]]
+  ↳ db/seeds.rb:52
+  [1m[35m (36.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[36mTicketZone Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_zones" ("zone", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["zone", "Pacifico"], ["created_at", "2019-04-03 14:42:12.322033"], ["updated_at", "2019-04-03 14:42:12.322033"]]
+  ↳ db/seeds.rb:52
+  [1m[35m (32.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[36mTicketZone Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_zones" ("zone", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["zone", "Pacifico VIP"], ["created_at", "2019-04-03 14:42:12.355414"], ["updated_at", "2019-04-03 14:42:12.355414"]]
+  ↳ db/seeds.rb:52
+  [1m[35m (48.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 4], ["price", 20000], ["ticket_zone_id", 4], ["created_at", "2019-04-03 14:42:12.412116"], ["updated_at", "2019-04-03 14:42:12.412116"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (33.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 4], ["price", 30000], ["ticket_zone_id", 5], ["created_at", "2019-04-03 14:42:12.447120"], ["updated_at", "2019-04-03 14:42:12.447120"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (32.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 4], ["price", 40000], ["ticket_zone_id", 6], ["created_at", "2019-04-03 14:42:12.480471"], ["updated_at", "2019-04-03 14:42:12.480471"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (32.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 5], ["price", 20000], ["ticket_zone_id", 4], ["created_at", "2019-04-03 14:42:12.513864"], ["updated_at", "2019-04-03 14:42:12.513864"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (32.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 5], ["price", 30000], ["ticket_zone_id", 5], ["created_at", "2019-04-03 14:42:12.547027"], ["updated_at", "2019-04-03 14:42:12.547027"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (32.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 5], ["price", 40000], ["ticket_zone_id", 6], ["created_at", "2019-04-03 14:42:12.580688"], ["updated_at", "2019-04-03 14:42:12.580688"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (31.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 6], ["price", 20000], ["ticket_zone_id", 4], ["created_at", "2019-04-03 14:42:12.614058"], ["updated_at", "2019-04-03 14:42:12.614058"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (31.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 6], ["price", 30000], ["ticket_zone_id", 5], ["created_at", "2019-04-03 14:42:12.647375"], ["updated_at", "2019-04-03 14:42:12.647375"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (31.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 6], ["price", 40000], ["ticket_zone_id", 6], ["created_at", "2019-04-03 14:42:12.680692"], ["updated_at", "2019-04-03 14:42:12.680692"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (40.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 6], ["created_at", "2019-04-03 14:42:12.726608"], ["updated_at", "2019-04-03 14:42:12.726608"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (52.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 4]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gus/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Claudio"], ["lastname", "Alvarez"], ["email", "calvarez1@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:41.353768"], ["updated_at", "2019-04-03 14:42:41.353768"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (39.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Juan"], ["lastname", "Rataplan"], ["email", "jrataplan@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:41.394483"], ["updated_at", "2019-04-03 14:42:41.394483"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (48.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Raul"], ["lastname", "Rabufetti"], ["email", "rrabufetti@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:41.444529"], ["updated_at", "2019-04-03 14:42:41.444529"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (48.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Raul"], ["lastname", "Ganfolfi"], ["email", "rgandolfi@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:41.494444"], ["updated_at", "2019-04-03 14:42:41.494444"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (49.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "lastname", "email", "password", "address", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Licenciado"], ["lastname", "Varela"], ["email", "lvarela@miuandes.cl"], ["password", "12345678"], ["address", "San Carlos de Apoquindo"], ["phone_number", 1234567890], ["created_at", "2019-04-03 14:42:41.544594"], ["updated_at", "2019-04-03 14:42:41.544594"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (48.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mEventVenue Create (0.1ms)[0m  [1m[32mINSERT INTO "event_venues" ("name", "address", "capacity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Estadio Nacional lalalalalala"], ["address", "Maraton"], ["capacity", 60000], ["created_at", "2019-04-03 14:42:41.598954"], ["updated_at", "2019-04-03 14:42:41.598954"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (60.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mEventVenue Create (0.1ms)[0m  [1m[32mINSERT INTO "event_venues" ("name", "address", "capacity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Estadio Monumental lalalalala"], ["address", "Exequiel"], ["capacity", 25000], ["created_at", "2019-04-03 14:42:41.660890"], ["updated_at", "2019-04-03 14:42:41.660890"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (48.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mEventVenue Create (0.1ms)[0m  [1m[32mINSERT INTO "event_venues" ("name", "address", "capacity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Movistar Arena lalalalala"], ["address", "Matta"], ["capacity", 15000], ["created_at", "2019-04-03 14:42:41.710674"], ["updated_at", "2019-04-03 14:42:41.710674"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (40.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "start_date", "event_venue_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Festival de la Cancion"], ["description", "Puro reggaeton"], ["start_date", "2020-03-01"], ["event_venue_id", 7], ["created_at", "2019-04-03 14:42:41.759374"], ["updated_at", "2019-04-03 14:42:41.759374"]]
+  ↳ db/seeds.rb:44
+  [1m[35m (42.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "start_date", "event_venue_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Twisted Sister"], ["description", "Puro rock"], ["start_date", "2020-04-01"], ["event_venue_id", 8], ["created_at", "2019-04-03 14:42:41.802522"], ["updated_at", "2019-04-03 14:42:41.802522"]]
+  ↳ db/seeds.rb:44
+  [1m[35m (40.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "description", "start_date", "event_venue_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Bad Bunny"], ["description", "Puro Trap"], ["start_date", "2020-05-01"], ["event_venue_id", 9], ["created_at", "2019-04-03 14:42:41.844354"], ["updated_at", "2019-04-03 14:42:41.844354"]]
+  ↳ db/seeds.rb:44
+  [1m[35m (40.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:44
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[36mTicketZone Create (0.1ms)[0m  [1m[32mINSERT INTO "ticket_zones" ("zone", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["zone", "Cancha"], ["created_at", "2019-04-03 14:42:41.889634"], ["updated_at", "2019-04-03 14:42:41.889634"]]
+  ↳ db/seeds.rb:52
+  [1m[35m (37.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[36mTicketZone Create (0.1ms)[0m  [1m[32mINSERT INTO "ticket_zones" ("zone", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["zone", "Pacifico"], ["created_at", "2019-04-03 14:42:41.927617"], ["updated_at", "2019-04-03 14:42:41.927617"]]
+  ↳ db/seeds.rb:52
+  [1m[35m (41.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[36mTicketZone Create (0.1ms)[0m  [1m[32mINSERT INTO "ticket_zones" ("zone", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["zone", "Pacifico VIP"], ["created_at", "2019-04-03 14:42:41.969696"], ["updated_at", "2019-04-03 14:42:41.969696"]]
+  ↳ db/seeds.rb:52
+  [1m[35m (40.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:52
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.1ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 7], ["price", 20000], ["ticket_zone_id", 7], ["created_at", "2019-04-03 14:42:42.017073"], ["updated_at", "2019-04-03 14:42:42.017073"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (43.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 7], ["price", 30000], ["ticket_zone_id", 8], ["created_at", "2019-04-03 14:42:42.061291"], ["updated_at", "2019-04-03 14:42:42.061291"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (40.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 7], ["price", 40000], ["ticket_zone_id", 9], ["created_at", "2019-04-03 14:42:42.102835"], ["updated_at", "2019-04-03 14:42:42.102835"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (40.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 8], ["price", 20000], ["ticket_zone_id", 7], ["created_at", "2019-04-03 14:42:42.144586"], ["updated_at", "2019-04-03 14:42:42.144586"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (40.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 8], ["price", 30000], ["ticket_zone_id", 8], ["created_at", "2019-04-03 14:42:42.186210"], ["updated_at", "2019-04-03 14:42:42.186210"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (40.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 8], ["price", 40000], ["ticket_zone_id", 9], ["created_at", "2019-04-03 14:42:42.227843"], ["updated_at", "2019-04-03 14:42:42.227843"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (40.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 9], ["price", 20000], ["ticket_zone_id", 7], ["created_at", "2019-04-03 14:42:42.269731"], ["updated_at", "2019-04-03 14:42:42.269731"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (40.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 9], ["price", 30000], ["ticket_zone_id", 8], ["created_at", "2019-04-03 14:42:42.311199"], ["updated_at", "2019-04-03 14:42:42.311199"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (40.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[36mTicketType Create (0.2ms)[0m  [1m[32mINSERT INTO "ticket_types" ("event_id", "price", "ticket_zone_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["event_id", 9], ["price", 40000], ["ticket_zone_id", 9], ["created_at", "2019-04-03 14:42:42.352945"], ["updated_at", "2019-04-03 14:42:42.352945"]]
+  ↳ db/seeds.rb:68
+  [1m[35m (57.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:68
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 11], ["created_at", "2019-04-03 14:42:42.415597"], ["updated_at", "2019-04-03 14:42:42.415597"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (36.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 7]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.1ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 21], ["order_id", 3], ["created_at", "2019-04-03 14:42:42.481766"], ["updated_at", "2019-04-03 14:42:42.481766"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (45.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 11], ["created_at", "2019-04-03 14:42:42.528172"], ["updated_at", "2019-04-03 14:42:42.528172"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (40.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 8]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.1ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 23], ["order_id", 4], ["created_at", "2019-04-03 14:42:42.570798"], ["updated_at", "2019-04-03 14:42:42.570798"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (198.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 11], ["created_at", "2019-04-03 14:42:42.769956"], ["updated_at", "2019-04-03 14:42:42.769956"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (48.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 9]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.1ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 27], ["order_id", 5], ["created_at", "2019-04-03 14:42:42.820820"], ["updated_at", "2019-04-03 14:42:42.820820"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (48.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 12], ["created_at", "2019-04-03 14:42:42.869946"], ["updated_at", "2019-04-03 14:42:42.869946"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (40.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 7]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.1ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 21], ["order_id", 6], ["created_at", "2019-04-03 14:42:42.912326"], ["updated_at", "2019-04-03 14:42:42.912326"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (39.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 12], ["created_at", "2019-04-03 14:42:42.953240"], ["updated_at", "2019-04-03 14:42:42.953240"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (40.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 8]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.1ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 23], ["order_id", 7], ["created_at", "2019-04-03 14:42:42.995568"], ["updated_at", "2019-04-03 14:42:42.995568"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (39.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 12], ["created_at", "2019-04-03 14:42:43.036601"], ["updated_at", "2019-04-03 14:42:43.036601"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (40.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 9]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.1ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 27], ["order_id", 8], ["created_at", "2019-04-03 14:42:43.079127"], ["updated_at", "2019-04-03 14:42:43.079127"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (39.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 13], ["created_at", "2019-04-03 14:42:43.119901"], ["updated_at", "2019-04-03 14:42:43.119901"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (40.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 7]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.1ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 19], ["order_id", 9], ["created_at", "2019-04-03 14:42:43.162685"], ["updated_at", "2019-04-03 14:42:43.162685"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (39.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 13], ["created_at", "2019-04-03 14:42:43.203220"], ["updated_at", "2019-04-03 14:42:43.203220"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (40.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 8]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.2ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 22], ["order_id", 10], ["created_at", "2019-04-03 14:42:43.245811"], ["updated_at", "2019-04-03 14:42:43.245811"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (39.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 13], ["created_at", "2019-04-03 14:42:43.286578"], ["updated_at", "2019-04-03 14:42:43.286578"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (40.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 9]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.1ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 26], ["order_id", 11], ["created_at", "2019-04-03 14:42:43.328959"], ["updated_at", "2019-04-03 14:42:43.328959"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (40.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 14], ["created_at", "2019-04-03 14:42:43.370003"], ["updated_at", "2019-04-03 14:42:43.370003"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (40.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 7]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.1ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 19], ["order_id", 12], ["created_at", "2019-04-03 14:42:43.412281"], ["updated_at", "2019-04-03 14:42:43.412281"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (40.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 14], ["created_at", "2019-04-03 14:42:43.453287"], ["updated_at", "2019-04-03 14:42:43.453287"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (40.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 8]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.1ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 23], ["order_id", 13], ["created_at", "2019-04-03 14:42:43.495687"], ["updated_at", "2019-04-03 14:42:43.495687"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (39.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 14], ["created_at", "2019-04-03 14:42:43.536627"], ["updated_at", "2019-04-03 14:42:43.536627"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (40.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 9]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.1ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 25], ["order_id", 14], ["created_at", "2019-04-03 14:42:43.579115"], ["updated_at", "2019-04-03 14:42:43.579115"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (39.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 15], ["created_at", "2019-04-03 14:42:43.620017"], ["updated_at", "2019-04-03 14:42:43.620017"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (40.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 7]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.1ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 20], ["order_id", 15], ["created_at", "2019-04-03 14:42:43.662610"], ["updated_at", "2019-04-03 14:42:43.662610"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (39.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 15], ["created_at", "2019-04-03 14:42:43.703333"], ["updated_at", "2019-04-03 14:42:43.703333"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (40.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 8]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.2ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 22], ["order_id", 16], ["created_at", "2019-04-03 14:42:43.746143"], ["updated_at", "2019-04-03 14:42:43.746143"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (39.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mOrder Create (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 15], ["created_at", "2019-04-03 14:42:43.786694"], ["updated_at", "2019-04-03 14:42:43.786694"]]
+  ↳ db/seeds.rb:74
+  [1m[35m (40.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:74
+  [1m[36mTicketType Load (0.1ms)[0m  [1m[34mSELECT "ticket_types".* FROM "ticket_types" WHERE "ticket_types"."event_id" = ?[0m  [["event_id", 9]]
+  ↳ db/seeds.rb:76
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/ticket.rb:6
+  [1m[36mTicket Create (0.1ms)[0m  [1m[32mINSERT INTO "tickets" ("ticket_type_id", "order_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["ticket_type_id", 27], ["order_id", 17], ["created_at", "2019-04-03 14:42:43.829115"], ["updated_at", "2019-04-03 14:42:43.829115"]]
+  ↳ db/seeds.rb:78
+  [1m[35m (39.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:78
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
